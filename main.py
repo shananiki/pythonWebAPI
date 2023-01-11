@@ -3,10 +3,7 @@ import json
 
 from Account import *
 from AccountHandler import *
-
 account_handler = AccountHandler()
-account_handler.loadAccounts()
-account_handler.printAccounts()
 
 app = Flask(__name__)
 
@@ -52,6 +49,27 @@ def newAccount():
         #account_handler.addAccount(new_acc)
         account_handler.addAccountSQL(new_acc)
         return jsonify({'accountStatus': "Created new Account!"})
+
+@app.route('/getDays', methods = ['GET', 'POST'])
+def getDays():
+    if(request.method == 'POST'):
+        json_object = request.get_json()
+        tmp_userid = json_object['userid']
+        current_days = account_handler.getDays(tmp_userid)
+        return jsonify({'days': "{0}".format(current_days)})
+
+@app.route('/updateDays', methods = ['GET', 'POST'])
+def updateDays():
+    if(request.method == 'POST'):
+        json_object = request.get_json()
+        tmp_userid = json_object['userid']
+        tmp_days = json_object['days']
+        if account_handler.updateDays(tmp_userid, tmp_days):
+            return jsonify({'status': "Updated Accounts!"})
+        else:
+            return jsonify({'status': "Failed!"})
+
+
 
 @app.route('/home/<int:num>', methods = ['GET'])
 def disp(num):

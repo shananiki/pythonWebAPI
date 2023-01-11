@@ -5,6 +5,6 @@ curl -i -X POST -H "Content-Type: application/json" -d "{\"username\":\"penis\",
 curl -i -X POST -H "Content-Type: application/json" -d "{\"username\":\"penis\", \"password\":\"123\"}" http://127.0.0.1:13500/newAccount
 
 
-curl -i -X POST -H "Content-Type: application/json" -d "{\"userid\":\"1\", \"days\":\"1\"}" http://127.0.0.1:13500/updateDates
+curl -i -X POST -H "Content-Type: application/json" -d "{\"userid\":\"1\", \"days\":\"1\"}" http://127.0.0.1:13500/updateDays
 
-curl -i -X POST -H "Content-Type: application/json" -d "{\"userid\":\"1\"}" http://127.0.0.1:13500/getDates
+curl -i -X POST -H "Content-Type: application/json" -d "{\"userid\":\"1\"}" http://127.0.0.1:13500/getDays

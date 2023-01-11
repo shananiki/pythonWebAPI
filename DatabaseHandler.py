@@ -34,6 +34,9 @@ class DatabaseHandler:
             if self.getDays(userid) >= 1:
                 self.cursor.execute('''UPDATE userDays SET days = {0} WHERE userID = {1}'''.format(days, userid))
                 self.connection.commit()
+                return True
+        else:
+            return False
 
 
     def getDays(self, userid):

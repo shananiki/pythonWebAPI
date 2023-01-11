@@ -9,6 +9,16 @@ class AccountHandler:
         self.accounts = []
         self.dbh = DatabaseHandler()
 
+    def getDays(self, userid):
+        return self.dbh.getDays(userid)
+
+    def updateDays(self, userid, days):
+        if self.dbh.updateDays(userid, days):
+            return True
+        else:
+            return False
+
+
     def addAccountSQL(self, account):
         self.accounts.append(account)
         self.dbh.addUser(account.getName(), account.getPassword())
