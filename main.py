@@ -53,6 +53,7 @@ def newAccount():
 @app.route('/getDays', methods = ['GET', 'POST'])
 def getDays():
     if(request.method == 'POST'):
+        print("Client asked for days: {0}".format(request.remote_addr))
         json_object = request.get_json()
         tmp_userid = json_object['userid']
         current_days = account_handler.getDays(tmp_userid)

@@ -9,6 +9,7 @@ class AccountHandler:
         self.accounts = []
         self.dbh = DatabaseHandler()
 
+
     def getDays(self, userid):
         return self.dbh.getDays(userid)
 
